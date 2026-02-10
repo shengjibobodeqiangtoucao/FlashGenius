@@ -1,10 +1,9 @@
-
 import { GoogleGenAI, Type } from "@google/genai";
 import { Card } from "./types";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
-
 export async function generateCardsFromTopic(topic: string, count: number = 5): Promise<Card[]> {
+  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
+  
   const response = await ai.models.generateContent({
     model: 'gemini-3-flash-preview',
     contents: `Generate ${count} educational flashcards about "${topic}". Provide a term and a concise definition for each.`,
@@ -38,6 +37,8 @@ export async function generateCardsFromTopic(topic: string, count: number = 5): 
 }
 
 export async function explainConcept(term: string, context: string): Promise<string> {
+  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
+  
   const response = await ai.models.generateContent({
     model: 'gemini-3-flash-preview',
     contents: `Explain the concept of "${term}" in the context of "${context}" for a high school student. Keep it under 100 words.`,

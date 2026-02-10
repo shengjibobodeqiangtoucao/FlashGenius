@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { AppView, Deck, Card, UserStats } from './types';
 import Dashboard from './components/Dashboard';
@@ -42,8 +41,13 @@ const INITIAL_DECKS: Deck[] = [
 const App: React.FC = () => {
   const [view, setView] = useState<AppView>('dashboard');
   const [decks, setDecks] = useState<Deck[]>(() => {
-    const saved = localStorage.getItem('fg_decks');
-    return saved ? JSON.parse(saved) : INITIAL_DECKS;
+    try {
+      const saved = localStorage.getItem('fg_decks');
+      return saved ? JSON.parse(saved) : INITIAL_DECKS;
+    } catch (e) {
+      console.error("Failed to parse localStorage data", e);
+      return INITIAL_DECKS;
+    }
   });
   const [currentDeckId, setCurrentDeckId] = useState<string | null>(null);
   const [stats, setStats] = useState<UserStats>({
