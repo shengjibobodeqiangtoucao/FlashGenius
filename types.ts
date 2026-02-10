@@ -1,4 +1,3 @@
-
 export interface Card {
   id: string;
   term: string;
@@ -23,7 +22,7 @@ export interface UserStats {
   totalPoints: number;
 }
 
-export type AppView = 'dashboard' | 'editor' | 'study-flip' | 'study-quiz' | 'study-match' | 'study-time' | 'statistics';
+export type AppView = 'dashboard' | 'editor' | 'study-flip' | 'study-quiz' | 'study-match' | 'study-time' | 'study-memory' | 'study-falling' | 'statistics';
 
 export enum QuestionType {
   MULTIPLE_CHOICE = 'MULTIPLE_CHOICE',

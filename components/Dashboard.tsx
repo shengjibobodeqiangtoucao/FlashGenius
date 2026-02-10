@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Deck, AppView } from '../types';
 
@@ -23,7 +22,7 @@ const Dashboard: React.FC<DashboardProps> = ({ decks, onSelectDeck, onEditDeck, 
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <h1 className="text-3xl font-bold text-gray-900">Your Library</h1>
-          <p className="text-gray-500">Select a deck to start learning or create a new one.</p>
+          <p className="text-gray-500">Select a deck to start learning or play a game.</p>
         </div>
         <button 
           onClick={onNewDeck}
@@ -64,31 +63,60 @@ const Dashboard: React.FC<DashboardProps> = ({ decks, onSelectDeck, onEditDeck, 
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-indigo-600 transition-colors">{deck.title}</h3>
               <p className="text-gray-500 text-sm mb-4 line-clamp-2">{deck.description}</p>
-              <div className="flex items-center gap-1 text-xs text-gray-400 mb-6">
+              <div className="flex items-center gap-1 text-xs text-gray-400 mb-4">
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
                 <span>{deck.cards.length} cards</span>
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-2">
-              <button 
-                onClick={() => onSelectDeck(deck.id, 'study-flip')}
-                className="bg-gray-50 hover:bg-indigo-50 text-gray-700 hover:text-indigo-600 px-4 py-2 rounded-lg text-sm font-semibold transition-colors flex items-center justify-center gap-2"
-              >
-                Flip
-              </button>
-              <button 
-                onClick={() => onSelectDeck(deck.id, 'study-quiz')}
-                className="bg-gray-50 hover:bg-indigo-50 text-gray-700 hover:text-indigo-600 px-4 py-2 rounded-lg text-sm font-semibold transition-colors flex items-center justify-center gap-2"
-              >
-                Quiz
-              </button>
-              <button 
-                onClick={() => onSelectDeck(deck.id, 'study-match')}
-                className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-all col-span-2 flex items-center justify-center gap-2"
-              >
-                Game Mode
-              </button>
+            <div className="space-y-4 pt-4 border-t border-gray-100">
+              <div>
+                <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Study</p>
+                <div className="grid grid-cols-2 gap-2">
+                  <button 
+                    onClick={() => onSelectDeck(deck.id, 'study-flip')}
+                    className="bg-gray-50 hover:bg-indigo-50 text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-lg text-sm font-semibold transition-colors flex items-center justify-center"
+                  >
+                    Flip Cards
+                  </button>
+                  <button 
+                    onClick={() => onSelectDeck(deck.id, 'study-quiz')}
+                    className="bg-gray-50 hover:bg-indigo-50 text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-lg text-sm font-semibold transition-colors flex items-center justify-center"
+                  >
+                    Quiz
+                  </button>
+                </div>
+              </div>
+              
+              <div>
+                <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Play</p>
+                <div className="grid grid-cols-2 gap-2">
+                  <button 
+                    onClick={() => onSelectDeck(deck.id, 'study-match')}
+                    className="bg-indigo-50 hover:bg-indigo-100 text-indigo-700 px-2 py-1.5 rounded-md text-xs font-semibold transition-colors"
+                  >
+                    🔗 Match
+                  </button>
+                  <button 
+                    onClick={() => onSelectDeck(deck.id, 'study-time')}
+                    className="bg-indigo-50 hover:bg-indigo-100 text-indigo-700 px-2 py-1.5 rounded-md text-xs font-semibold transition-colors"
+                  >
+                    ⏱️ Speed
+                  </button>
+                  <button 
+                    onClick={() => onSelectDeck(deck.id, 'study-memory')}
+                    className="bg-indigo-50 hover:bg-indigo-100 text-indigo-700 px-2 py-1.5 rounded-md text-xs font-semibold transition-colors"
+                  >
+                    🃏 Memory
+                  </button>
+                  <button 
+                    onClick={() => onSelectDeck(deck.id, 'study-falling')}
+                    className="bg-indigo-50 hover:bg-indigo-100 text-indigo-700 px-2 py-1.5 rounded-md text-xs font-semibold transition-colors"
+                  >
+                    ☄️ Gravity
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         ))}

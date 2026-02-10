@@ -6,6 +6,8 @@ import FlipStudy from './components/FlipStudy';
 import QuizStudy from './components/QuizStudy';
 import MatchStudy from './components/MatchStudy';
 import TimeChallenge from './components/TimeChallenge';
+import MemoryGame from './components/MemoryGame';
+import FallingWords from './components/FallingWords';
 import Statistics from './components/Statistics';
 import Navbar from './components/Navbar';
 
@@ -85,7 +87,7 @@ const App: React.FC = () => {
     <div className="min-h-screen flex flex-col">
       <Navbar currentView={view} setView={setView} stats={stats} />
       
-      <main className="flex-grow container mx-auto px-4 py-8 max-w-6xl">
+      <main className="flex-grow container mx-auto px-4 py-8 max-w-6xl flex flex-col justify-center">
         {view === 'dashboard' && (
           <Dashboard 
             decks={decks} 
@@ -138,6 +140,20 @@ const App: React.FC = () => {
 
         {view === 'study-time' && currentDeck && (
           <TimeChallenge 
+            deck={currentDeck} 
+            onFinish={() => setView('dashboard')}
+          />
+        )}
+
+        {view === 'study-memory' && currentDeck && (
+          <MemoryGame 
+            deck={currentDeck} 
+            onFinish={() => setView('dashboard')}
+          />
+        )}
+
+        {view === 'study-falling' && currentDeck && (
+          <FallingWords 
             deck={currentDeck} 
             onFinish={() => setView('dashboard')}
           />
