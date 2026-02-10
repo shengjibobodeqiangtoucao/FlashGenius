@@ -1,0 +1,8 @@
+{
+  "name": "Copy of FlashGenius - AI-Powered Flashcards",
+  "description": "A comprehensive flashcard learning platform similar to Quizlet, featuring AI card generation, multiple study modes (Flip, Quiz, Match, Time Challenge), and progress tracking.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
